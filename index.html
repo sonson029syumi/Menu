@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>気まぐれメニュー — Home Kitchen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #f5f0e8;
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8b99a' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            font-family: 'Lato', 'Noto Serif JP', sans-serif;
+        }
+
+        .card {
+            background: #fffdf8;
+            border-radius: 2px;
+            width: 100%;
+            max-width: 420px;
+            padding: 48px 40px 40px;
+            box-shadow:
+                0 2px 8px rgba(100, 80, 50, 0.08),
+                0 12px 40px rgba(100, 80, 50, 0.1);
+            position: relative;
+            opacity: 0;
+            animation: fadeUp 0.9s ease 0.2s forwards;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: rgba(200, 175, 130, 0.45);
+            border-radius: 2px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header-tag {
+            display: inline-block;
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: #a08c6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3a2e22;
+            letter-spacing: 4px;
+            line-height: 1.2;
+        }
+
+        .header-sub {
+            margin-top: 12px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #b09070;
+            letter-spacing: 1px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 24px 0;
+        }
+        .divider-line { flex: 1; height: 1px; background: #d9cfc0; }
+        .divider-leaf { font-size: 0.7rem; color: #b09878; }
+
+        .category { margin-bottom: 24px; }
+
+        .category-title {
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 5px;
+            color: #a08c6e;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed #e0d8cc;
+            transition: transform 0.2s ease;
+        }
+        .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .item-name {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.05rem;
+            color: #3a2e22;
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+
+        .item-desc {
+            font-size: 0.75rem;
+            color: #a09080;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #e0d8cc;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 1.1s forwards;
+        }
+
+        .footer-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #b09070;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="header-tag">Today's Kitchen</div>
+            <h1>気まぐれメニュー</h1>
+            <div class="header-sub">Seasonal delights, just for today.</div>
+        </div>
+
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-leaf">✿</div>
+            <div class="divider-line"></div>
+        </div>
+
+        <div class="category">
+            <div class="category-title">— Food —</div>
+            <div class="item">
+                <div class="item-name">本日のパスタ</div>
+                <div class="item-desc">自家製バジルソースのジェノベーゼ。採れたての香りを楽しんで。</div>
+            </div>
+            <div class="item">
+                <div class="item-name">焼き立てバゲット</div>
+                <div class="item-desc">ホイップしたてのフレッシュバターをたっぷり添えて。</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-title">— Drink —</div>
+            <div class="item">
+                <div class="item-name">ハンドドリップコーヒー</div>
+                <div class="item-desc">深煎りの豆を丁寧に淹れます。食後のひとときに。</div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-text">Slow food, Good time ☕</div>
+        </div>
+    </div>
+</body>
+</html>
