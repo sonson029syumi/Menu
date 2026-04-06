@@ -23,39 +23,69 @@
             background: #fffdf8;
             width: 100%;
             max-width: 400px;
+            height: 85vh; /* 縦の長さを固定してスクロールさせる */
             padding: 40px 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
         }
         .card::before {
             content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
             width: 60px; height: 20px; background: rgba(200, 175, 130, 0.4); border-radius: 2px;
+            z-index: 10;
         }
-        .header-tag { font-size: 0.6rem; letter-spacing: 3px; color: #a08c6e; margin-bottom: 8px; text-transform: uppercase; }
         
+        /* スクロールエリアの設定 */
+        .scroll-content {
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 5px;
+        }
+        /* スクロールバーを見えなくする（お洒落重視） */
+        .scroll-content::-webkit-scrollbar { width: 0; }
+        
+        .header { text-align: center; margin-bottom: 10px; }
+        .header-tag { font-size: 0.6rem; letter-spacing: 3px; color: #a08c6e; margin-bottom: 8px; text-transform: uppercase; }
         .header h1 {
             font-size: 7.5vw;
-            max-font-size: 1.8rem;
             font-weight: 700;
             color: #3a2e22;
             white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             line-height: 1.4;
-            margin: 0 auto;
         }
         @media (min-width: 400px) { .header h1 { font-size: 1.8rem; } }
-
         .header-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.8rem; color: #b09070; margin-top: 5px; }
+
         .divider { display: flex; align-items: center; gap: 10px; margin: 20px 0; }
         .divider-line { flex: 1; height: 1px; background: #d9cfc0; }
-        .category { margin-bottom: 20px; }
-        .category-title { font-size: 0.6rem; letter-spacing: 4px; color: #a08c6e; margin-bottom: 15px; }
-        .item { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #e0d8cc; text-align: left; }
+        
+        .category { margin-bottom: 25px; text-align: center; }
+        .category-title { font-size: 0.65rem; letter-spacing: 4px; color: #a08c6e; margin-bottom: 15px; font-weight: bold; }
+        .item { margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px dashed #e0d8cc; }
         .item:last-child { border-bottom: none; }
-        .item-name { font-size: 1rem; color: #3a2e22; font-weight: 700; text-align: center; }
-        .footer { margin-top: 25px; padding-top: 15px; border-top: 1px solid #e0d8cc; font-family: 'Playfair Display', serif; font-style: italic; color: #b09070; font-size: 0.9rem; }
+        .item-name { font-size: 0.95rem; color: #3a2e22; font-weight: 700; }
+
+        .footer { 
+            margin-top: 15px; 
+            padding-top: 10px; 
+            border-top: 1px solid #e0d8cc; 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            color: #b09070; 
+            font-size: 0.85rem; 
+            text-align: center;
+            position: relative;
+        }
+        /* スクロール案内のアイコン */
+        .scroll-hint {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body>
@@ -65,41 +95,45 @@
             <h1>気まぐれメニュー</h1>
             <div class="header-sub">Simple & Real delights.</div>
         </div>
+
         <div class="divider"><div class="divider-line"></div><div style="font-size:0.7rem;color:#b09878;">✿</div><div class="divider-line"></div></div>
-        
-        <div class="category">
-            <div class="category-title">— FOOD —</div>
-            <div class="item">
-                <div class="item-name">油そば</div>
+
+        <div class="scroll-content">
+            <div class="category">
+                <div class="category-title">— MAIN FOOD —</div>
+                <div class="item"><div class="item-name">油そば</div></div>
+                <div class="item"><div class="item-name">チャーハン</div></div>
+                <div class="item"><div class="item-name">トマトパスタ</div></div>
+                <div class="item"><div class="item-name">トースト</div></div>
+                <div class="item"><div class="item-name">卵かけご飯</div></div>
             </div>
-            <div class="item">
-                <div class="item-name">チャーハン</div>
+
+            <div class="category">
+                <div class="category-title">— SIDE MENU —</div>
+                <div class="item"><div class="item-name">納豆</div></div>
+                <div class="item"><div class="item-name">冷奴</div></div>
             </div>
-            <div class="item">
-                <div class="item-name">トマトパスタ</div>
+
+            <div class="category">
+                <div class="category-title">— DESSERT —</div>
+                <div class="item"><div class="item-name">ヨーグルト</div></div>
+                <div class="item"><div class="item-name">気まぐれフルーツ</div></div>
             </div>
-            <div class="item">
-                <div class="item-name">トースト</div>
-            </div>
-            <div class="item">
-                <div class="item-name">卵かけご飯</div>
+
+            <div class="category">
+                <div class="category-title">— DRINK —</div>
+                <div class="item"><div class="item-name">コーヒー</div></div>
+                <div class="item"><div class="item-name">カフェラテ</div></div>
+                <div class="item"><div class="item-name">紅茶 (Hot / Ice)</div></div>
+                <div class="item"><div class="item-name">麦茶</div></div>
+                <div class="item"><div class="item-name">水</div></div>
             </div>
         </div>
 
-        <div class="category">
-            <div class="category-title">— DRINK —</div>
-            <div class="item">
-                <div class="item-name">コーヒー / カフェラテ</div>
-            </div>
-            <div class="item">
-                <div class="item-name">紅茶 (Hot / Ice)</div>
-            </div>
-            <div class="item">
-                <div class="item-name">麦茶 / 水</div>
-            </div>
+        <div class="footer">
+            Good food, Good time ☕
+            <div class="scroll-hint">Scroll ↓</div>
         </div>
-
-        <div class="footer">Good food, Good time ☕</div>
     </div>
 </body>
 </html>
