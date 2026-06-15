@@ -23,7 +23,7 @@
             background: #fffdf8;
             width: 100%;
             max-width: 400px;
-            height: 85vh; /* 縦の長さを固定してスクロールさせる */
+            height: 85vh;
             padding: 40px 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
@@ -35,14 +35,11 @@
             width: 60px; height: 20px; background: rgba(200, 175, 130, 0.4); border-radius: 2px;
             z-index: 10;
         }
-        
-        /* スクロールエリアの設定 */
         .scroll-content {
             overflow-y: auto;
             flex: 1;
             padding-right: 5px;
         }
-        /* スクロールバーを見えなくする（お洒落重視） */
         .scroll-content::-webkit-scrollbar { width: 0; }
         
         .header { text-align: center; margin-bottom: 10px; }
@@ -77,7 +74,6 @@
             text-align: center;
             position: relative;
         }
-        /* スクロール案内のアイコン */
         .scroll-hint {
             position: absolute;
             right: 0;
@@ -102,9 +98,12 @@
             <div class="category">
                 <div class="category-title">— MAIN FOOD —</div>
                 <div class="item"><div class="item-name">油そば</div></div>
+                <div class="item"><div class="item-name">釜玉うどん</div></div>
+                <div class="item"><div class="item-name">もりそば</div></div>
                 <div class="item"><div class="item-name">チャーハン</div></div>
                 <div class="item"><div class="item-name">トマトパスタ</div></div>
-                <div class="item"><div class="item-name">トースト</div></div>
+                <div class="item"><div class="item-name">塩バターパン</div></div>
+                <div class="item"><div class="item-name">ピザパン</div></div>
                 <div class="item"><div class="item-name">卵かけご飯</div></div>
             </div>
 
@@ -117,14 +116,13 @@
             <div class="category">
                 <div class="category-title">— DESSERT —</div>
                 <div class="item"><div class="item-name">ヨーグルト</div></div>
-                <div class="item"><div class="item-name">気まぐれフルーツ</div></div>
             </div>
 
             <div class="category">
                 <div class="category-title">— DRINK —</div>
                 <div class="item"><div class="item-name">コーヒー</div></div>
                 <div class="item"><div class="item-name">カフェラテ</div></div>
-                <div class="item"><div class="item-name">紅茶 (Hot / Ice)</div></div>
+                <div class="item"><div class="item-name">紅茶</div></div>
                 <div class="item"><div class="item-name">麦茶</div></div>
                 <div class="item"><div class="item-name">水</div></div>
             </div>
